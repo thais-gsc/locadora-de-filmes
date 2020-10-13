@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{title}}</h1>
+    <HelloWorld msg="hello!"/>
+
+    <div class="horas">
+      <p>{{parteDoDia()}}</p>
+    </div>
   </div>
 </template>
 
@@ -12,6 +16,20 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  }, data(){
+    return {
+      title : "Locadora de Filmes",
+      horas : new Date().getHours(),}
+  }, methods:{
+    parteDoDia(){
+      if (this.horas < 12){
+        return "Está de dia!"
+      } else if (this.horas >= 12 && this.horas < 18){
+        return "Está de tarde!"
+      } else if (this.horas >= 18){
+        return "Está de noite!"
+      }
+    }
   }
 }
 </script>
